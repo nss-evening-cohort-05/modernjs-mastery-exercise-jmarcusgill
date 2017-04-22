@@ -1,0 +1,21 @@
+{
+  "name": "modernjs-mastery-exercise-jmarcusgill",
+  "homepage": "https://github.com/nss-evening-cohort-05/modernjs-mastery-exercise-jmarcusgill",
+  "authors": [
+    "jmarcusgill <jmarcusgill@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7"
+  }
+}
