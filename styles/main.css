@@ -1,3 +1,26 @@
 body{
   background-color: mediumpurple;
 }
+
+#brandImage {
+  height: 30px;
+}
+
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+
+.container{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.container img {
+  width: 60%;
+}
