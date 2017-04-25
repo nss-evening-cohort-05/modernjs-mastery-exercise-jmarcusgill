@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-  let marvelArray = [];
 
 
   $(".btn").click((event) => {
@@ -8,48 +7,54 @@ $(document).ready(function(){
      dataGetter();
    });
 
+  let marvel = [];
 
-  const loadCharacters = () => {
-    return new Promise((resolve, reject) => {
-      $.ajax("./db/characters.json")
-      .done((data1) => resolve(data1.characters))
+  const writeToDOM = (marvel) => {
+    console.log(marvel);
+  };
+
+
+
+//////////load functions for 3 json files
+
+  const loadTeams = () => {
+    return new Promise((resolve, reject) =>{
+      $.ajax("./db/teams.json")
+      .done((data1) => resolve(data1.teams))
       .fail((error1) => reject(error1));
     });
   };
 
-  const loadTeams = () => {
-    return new Promise((resolve, reject) => {
-      $.ajax("./db/teams.json")
-      .done((data2) => resolve(data2.teams))
-      .fail((error2) => reject(error2));
+  const loadGenders = () => {
+    return new Promise((resolve, reject) =>{
+      $.ajax("./db/genders.json")
+      .done((data2) => (data2.genders))
+      .fail((error2) => (error2));
     });
   };
 
-  const loadGender = () => {
-    return new Promise((resolve, reject) => {
-      $.ajax("./db/genders.json")
-      .done((data3) => (data3.genders))
+  const loadCharacters = () => {
+    return new Promise((resolve, reject) =>{
+      $.ajax("./db/characters.json")
+      .done((data3) => (data3.characters))
       .fail((error3) => (error3));
     });
   };
 
+//////////////////// Promise.all
+
   const dataGetter = () => {
-    Promise.all([loadCharacters(), loadTeams(), loadGender()])
-    .then((result) => {
-      result.forEach((mutant) => {
-        marvelArray.push(mutant);
+    Promise.all([loadTeams(), loadGenders(), loadCharacters()])
+    .then((resultz) => {
+      resultz.forEach((ajaxCalls) => {
+          ajaxCalls.forEach((mutant) => {
+            marvel.push(ajaxCalls);
+          });
       });
-      writeToDom(marvelArray);
-    }).catch((error) => {
-      console.log(error);
     });
+      console.log(resultz);
+      // writeToDOM(marvel);
   };
-
-
-  const writeToDom = (marvelArray) => {
-    console.log(marvelArray);
-  };
-
 
 
 }); //ends doc.ready
