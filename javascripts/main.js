@@ -18,43 +18,47 @@ $(document).ready(function(){
 //////////load functions for 3 json files
 
   const loadTeams = () => {
-    return new Promise((resolve, reject) =>{
+    return new Promise ((resolve, reject) =>{
       $.ajax("./db/teams.json")
-      .done((data1) => resolve(data1.teams))
-      .fail((error1) => reject(error1));
+      .done((data) => resolve(data.teams))
+      .fail((error) => reject(error));
     });
   };
 
   const loadGenders = () => {
-    return new Promise((resolve, reject) =>{
+    return new Promise ((resolve, reject) =>{
       $.ajax("./db/genders.json")
-      .done((data2) => (data2.genders))
-      .fail((error2) => (error2));
+      .done((data2) => resolve(data2.genders))
+      .fail((error2) => reject(error2));
     });
   };
 
   const loadCharacters = () => {
-    return new Promise((resolve, reject) =>{
+    return new Promise ((resolve, reject) =>{
       $.ajax("./db/characters.json")
-      .done((data3) => (data3.characters))
-      .fail((error3) => (error3));
+      .done((data3) => resolve(data3.characters))
+      .fail((error3) => reject(error3));
     });
   };
+
+
 
 //////////////////// Promise.all
 
-  const dataGetter = () => {
-    Promise.all([loadTeams(), loadGenders(), loadCharacters()])
-    .then((resultz) => {
-      resultz.forEach((ajaxCalls) => {
-          ajaxCalls.forEach((mutant) => {
-            marvel.push(ajaxCalls);
-          });
+const dataGetter = (teamId) => {
+  Promise.all([loadTeams(), loadGenders(), loadCharacters()])
+  .then((results) =>{
+    results.forEach((ajaxCall)=>{
+      ajaxCall.forEach((mutant) =>{
+        marvel.push(mutant);
       });
     });
-      console.log(resultz);
-      // writeToDOM(marvel);
-  };
+  })
+  .catch((error) =>{
+    console.log(error);
+  });
+  writeToDOM(marvel);
+};
 
 
 }); //ends doc.ready
