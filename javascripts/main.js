@@ -3,15 +3,17 @@ $(document).ready(function(){
 
 
   $(".btn").click((event) => {
+    let printChar = $(event.target).attr("id");
      $("#bodyImage").hide("slow");
+     console.log(printChar);
      dataGetter();
    });
 
   let marvel = [];
+  let teamArray = [];
+  let genderArray = [];
+  let characterArray = [];
 
-  const writeToDOM = (marvel) => {
-    console.log(marvel);
-  };
 
 
 
@@ -41,23 +43,29 @@ $(document).ready(function(){
     });
   };
 
+  const writeDOM = () => {
+    console.log("inside writeDOM", characterArray);
+  };
+
 
 
 //////////////////// Promise.all
 
-const dataGetter = (teamId) => {
+const dataGetter = () => {
   Promise.all([loadTeams(), loadGenders(), loadCharacters()])
   .then((results) =>{
     results.forEach((ajaxCall)=>{
-      ajaxCall.forEach((mutant) =>{
-        marvel.push(mutant);
-      });
+    marvel.push(ajaxCall);
     });
+    teamArray = marvel[0];
+    genderArray = marvel[1];
+    characterArray = marvel[2];
+
+    writeDOM(characterArray);
   })
   .catch((error) =>{
     console.log(error);
   });
-  writeToDOM(marvel);
 };
 
 
