@@ -24,3 +24,61 @@ body{
 .container img {
   width: 60%;
 }
+
+/*.thumbnail {
+  background-color: #504a4a;
+  height: 460px;
+  padding-top: 0;
+}
+.panel-heading {
+  background-color: #f78f3f;
+  text-align: center;
+  margin-top: 0;
+  margin-left: -4px;
+  margin-right: -4px;
+}
+*/
+
+/*.card{
+  border: 2px solid black;
+  padding: 0;
+
+}*/
+
+h3.panel-heading {
+  background-color: #f78f3f;
+  text-align: center;
+  margin: 0;
+
+}
+
+.thumbnail {
+  background-color: #504a4a;
+  height: 450px;
+  padding: 0px;
+  margin: 0px 0px 10px 0px;
+  text-align: center;
+}
+
+.thumbnail img {
+  width: 50%;
+  margin-top: 10px;
+}
+
+p {
+  color: #e23636;
+}
+
+
+.female {
+ border: 3px solid pink;
+}
+
+.male {
+  border: 3px solid blue;
+}
+
+.navbar-btn {
+  margin: 10px;
+  background-color: #518cca;
+}

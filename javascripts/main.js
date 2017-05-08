@@ -13,26 +13,43 @@ $(document).ready(function(){
    });
 
 
+
 ////////////functions for matching teams and writing to dom
 
 
 
   const writeDOM = (characterArray, teamArray) => {
     let domString = "";
+    let counter = 0;
     // console.log(characterArray, teamArray)
 
     for (let x = 0; x < characterArray.length; x++) {
       if (printChar === characterArray[x].team_name) {
-        domString += `<div class="col-xs-4 hero-container">`;
-        domString += `<h3>${characterArray[x].name}</h3>`;
-        domString += `<section><img class="hero-image" src="${characterArray[x].image}"></section>`;
-        domString += `<p class="text-left">${characterArray[x].description}</p>`;
-        domString += `</div>`;
+
+        if(x%3===0){
+          domString += `<div class="row">`;
+        }
+
+        domString += `<div class="col-sm-6 col-md-3">`;
+        domString += `<div class="thumbnail">`;
+        domString += `<h3 class="panel-heading">${characterArray[x].name}</h3>`;
+        if (characterArray[x].gender_name === "Female") {
+          domString += `<img class="img-circle female" src="${characterArray[x].image}" alt="${characterArray[x].name}">`;
+        } else {
+          domString += `<img class="img-circle male" src="${characterArray[x].image}" alt="${characterArray[x].name}">`;
+        }
+        domString += `<div class="caption">`;
+        domString += `<p>${characterArray[x].description}</p>`;
+        domString += `</div></div></div>`;
+
+        if(x%3===2){
+          domString += `</div>`;
+        }
       }
     }
     console.log("printChar", printChar);
     console.log(characterArray);
-    $(".container").html(domString);
+    $(".heroes").html(domString);
 
 
   };
