@@ -1,10 +1,11 @@
 {
   "genders": [{
-    "id": 0,
-    "type": "Female"
-  },
-  {
-    "id": 1,
-    "type": "Male"
-  }]
+      "id": 0,
+      "type": "Female"
+    },
+    {
+      "id": 1,
+      "type": "Male"
+    }
+  ]
 }
